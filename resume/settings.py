@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-8lp&evub*!1bcjbfw=@tg#7%wt8kv9z)tx0w4ftkv$5u=zm+d9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['52.0.43.93']
+ALLOWED_HOSTS = ['52.0.43.93', 'mkhnoori.net']
 
 
 # Application definition
@@ -26,7 +26,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'website',
-    'whitenoise.runserver_nostatic',
 ]
 
 MIDDLEWARE = [
@@ -37,7 +36,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+
 ]
 
 ROOT_URLCONF = 'resume.urls'
@@ -66,10 +65,15 @@ WSGI_APPLICATION = 'resume.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mydb',  # Replace with your DB name
+        'USER': 'admin',  # Replace with your DB username
+        'PASSWORD': 'khalid',  # Replace with your DB password
+        'HOST': 'db',  # This matches the db service name in your docker-compose.yml
+        'PORT': '5432',
     }
 }
+
 
 
 # Password validation
